@@ -14,15 +14,9 @@ window.MovingObject = MovingObject;
 window.GameView = GameView;
 window.Util = Util;
 
-
-const canvasEl = document.getElementsByTagName("canvas")[0];
-const ctx = canvasEl.getContext("2d");
-// canvasEl.height = window.innerHeight;
-// canvasEl.width = window.innerWidth;
-// new Game(
-//   canvasEl.width,
-//   canvasEl.height
-// ).start(canvasEl);
-
-const gv = new GameView(ctx);
-gv.start();
+document.addEventListener("DOMContentLoaded", function(event) {
+  const canvasEl = document.getElementsByTagName("canvas")[0];
+  const ctx = canvasEl.getContext("2d");
+  const gv = new GameView(ctx);
+  gv.start();
+  });

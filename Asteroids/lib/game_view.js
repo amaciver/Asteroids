@@ -9,6 +9,7 @@ GameView.prototype.start = function () {
   setInterval(() => {
     this.game.draw(this.ctx);
     this.game.moveObjects();
+    this.game.checkCollisons();
   }, 20);
 };
 

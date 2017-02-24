@@ -1,11 +1,11 @@
 const MovingObject = require('./moving_object.js');
 const Util = require('./utils.js');
 
-function Asteroid (pos) {
+function Asteroid (pos, game) {
   const COLOR = 'red';
   const RADIUS = 25;
-  const VECT = this.randomVec(50);
-  MovingObject.call(this, {color: COLOR, radius: RADIUS, pos: pos, vel: VECT});
+  const VECT = this.randomVec(15);
+  MovingObject.call(this, {color: COLOR, radius: RADIUS, pos: pos, vel: VECT, game: game});
 
 
 }
