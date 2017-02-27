@@ -48,17 +48,23 @@ const Util = {
     //   phi2 = 2*Math.PI + phi2;
     // }
     // let phi2 = Math.acos((cpx-x2) / r2);
-    let theta1 = Math.atan(u1[1]/u1[0]);
-    let theta2 = Math.atan(u2[1]/u2[0]);
-
+    let theta1 = Math.acos(u1[0]/u1mag);
+    if (u1[1] < 0 ) {
+      theta1 = -theta1;
+    }
     if (theta1 < 0 ) {
       theta1 = 2*Math.PI + theta1;
+    }
+
+    let theta2 = Math.acos(u2[0]/u2mag);
+    if (u2[1] < 0 ) {
+      theta2 = -theta2;
     }
     if (theta2 < 0 ) {
       theta2 = 2*Math.PI + theta2;
     }
 
-    // console.log(theta1, theta2, phi1);
+    console.log(theta1, theta2, phi1);
 
     // const v1x = ( (u1[0]*(m1-m2) + 2*m2*u2[0]) / (m1 + m2));
     // const v1y = ( (u1[1]*(m1-m2) + 2*m2*u2[1]) / (m1 + m2));
