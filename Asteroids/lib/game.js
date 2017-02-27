@@ -5,15 +5,17 @@ const Bullet = require('./bullet.js');
 function Game() {
   this.DIM_X = window.innerWidth;
   this.DIM_Y = window.innerHeight;
-  this.NUM_ASTEROIDS = 10;
+  this.NUM_ASTEROIDS = 4;
   this.asteroids = [];
   this.addAsteroids();
   this.ship = new Ship(this.randomPosition(), this);
+  this.bullets = [];
 }
 
 Game.prototype.everyObj = function() {
   let result = [];
   result = result.concat(this.asteroids);
+  result = result.concat(this.bullets);
   result.push(this.ship);
   // console.log(result);
   return result;
@@ -24,6 +26,17 @@ Game.prototype.addAsteroids = function () {
   for (let i = 0; i < this.NUM_ASTEROIDS; i++) {
     this.asteroids.push(new Asteroid(this.randomPosition(), this));
   }
+};
+
+Game.prototype.addShip = function () {
+  this.ship = new Ship(this.randomPosition(), this);
+};
+
+Game.prototype.addBullet = function (bullet) {
+  if (this.bullets.length < 5) {
+    this.bullets.push(bullet);
+  }
+  console.log(this.bullets);
 };
 
 Game.prototype.draw = function(ctx) {
@@ -53,12 +66,13 @@ Game.prototype.wrap = function(pos) {
 Game.prototype.randomPosition = function () {
   const xpos = getRandomInt(0, this.DIM_X);
   const ypos = getRandomInt(0, this.DIM_Y);
+  // console.log(xpos, ypos);
   return [xpos, ypos];
 };
 
 Game.prototype.moveObjects = function() {
-  this.checkCollisons();
   this.everyObj().forEach((obj) => obj.move());
+  this.checkCollisons();
 };
 
 Game.prototype.checkCollisons = function() {

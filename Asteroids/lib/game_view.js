@@ -30,6 +30,9 @@ GameView.prototype.bindKeyHandlers = function() {
   key('d', () => {
     this.game.ship.power('right');
   });
+  key('j', () => {
+    this.game.ship.fireBullet();
+  });
 };
 
 module.exports = GameView;

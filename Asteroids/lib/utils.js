@@ -14,6 +14,26 @@ const Util = {
     return Math.sqrt(Math.pow(pos1[0] - pos2[0],2) + Math.pow(pos1[1] - pos2[1], 2));
   },
 
+  theta (vel) {
+    const vmag = Math.sqrt((vel[0]*vel[0]) + (vel[1]*vel[1]));
+    let theta = Math.acos(vel[0]/vmag);
+    if (vmag === 0) {
+      theta = 0;
+    }
+    if (vel[1] < 0 ) {
+      theta = -theta;
+    }
+    if (theta < 0 ) {
+      theta = 2*Math.PI + theta;
+    }
+    // console.log(theta);
+    return theta;
+  },
+
+  magnitude (vel) {
+    return Math.sqrt((vel[0]*vel[0]) + (vel[1]*vel[1]));
+  },
+
   resolveCollison(obj1, obj2) {
     const x1 = obj1.pos[0];
     const y1 = obj1.pos[1];
@@ -43,11 +63,9 @@ const Util = {
       phi1 = 2*Math.PI + phi1;
     }
 
-    // let phi2 = Math.PI - phi1;
-    // if (phi2 < 0) {
-    //   phi2 = 2*Math.PI + phi2;
-    // }
-    // let phi2 = Math.acos((cpx-x2) / r2);
+    // const theta1 = obj1.theta;
+    // const theta2 = obj2.theta;
+
     let theta1 = Math.acos(u1[0]/u1mag);
     if (u1[1] < 0 ) {
       theta1 = -theta1;
@@ -64,7 +82,7 @@ const Util = {
       theta2 = 2*Math.PI + theta2;
     }
 
-    console.log(theta1, theta2, phi1);
+    // console.log(theta1, obj2.vel, theta2, phi1);
 
     // const v1x = ( (u1[0]*(m1-m2) + 2*m2*u2[0]) / (m1 + m2));
     // const v1y = ( (u1[1]*(m1-m2) + 2*m2*u2[1]) / (m1 + m2));

@@ -6,6 +6,7 @@ function MovingObject(options) {
   this.radius = options.radius;
   this.color = options.color;
   this.game = options.game;
+  this.theta = Util.theta(this.vel);
 }
 
 

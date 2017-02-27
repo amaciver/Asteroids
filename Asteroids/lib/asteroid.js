@@ -22,9 +22,9 @@ Asteroid.prototype.randomVec = function (length) {
 Asteroid.prototype.collideWith = function(otherObject) {
   Util.resolveCollison(this, otherObject);
   // this.game.remove(this);
-  // if (otherObject instanceof Ship) {
-  //   otherObject.relocate();
-  // } else {
+  if (otherObject instanceof Ship) {
+    otherObject.relocate();
+  } 
   //   this.game.remove(otherObject);
   // }
 };
