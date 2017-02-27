@@ -5,7 +5,7 @@ const Bullet = require('./bullet.js');
 function Game() {
   this.DIM_X = window.innerWidth;
   this.DIM_Y = window.innerHeight;
-  this.NUM_ASTEROIDS = 8;
+  this.NUM_ASTEROIDS = 10;
   this.asteroids = [];
   this.addAsteroids();
   this.ship = new Ship(this.randomPosition(), this);
@@ -57,6 +57,7 @@ Game.prototype.randomPosition = function () {
 };
 
 Game.prototype.moveObjects = function() {
+  this.checkCollisons();
   this.everyObj().forEach((obj) => obj.move());
 };
 

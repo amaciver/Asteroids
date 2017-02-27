@@ -4,9 +4,10 @@ const Ship = require('./ship.js');
 
 function Asteroid (pos, game) {
   const COLOR = 'red';
-  const RADIUS = 25;
-  const VECT = this.randomVec(15);
+  const RADIUS = 25 * Math.random() + 15;
+  const VECT = this.randomVec(5);
   MovingObject.call(this, {color: COLOR, radius: RADIUS, pos: pos, vel: VECT, game: game});
+  this.mass = (4/3) * Math.PI * Math.pow(this.radius, 3);
 
 
 }
@@ -19,6 +20,7 @@ Asteroid.prototype.randomVec = function (length) {
 };
 
 Asteroid.prototype.collideWith = function(otherObject) {
+  Util.resolveCollison(this, otherObject);
   // this.game.remove(this);
   // if (otherObject instanceof Ship) {
   //   otherObject.relocate();

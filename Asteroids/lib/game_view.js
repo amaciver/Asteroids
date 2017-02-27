@@ -10,9 +10,9 @@ function GameView(ctx) {
 GameView.prototype.start = function () {
   setInterval(() => {
     this.bindKeyHandlers();
-    this.game.draw(this.ctx);
+    // this.game.checkCollisons();
     this.game.moveObjects();
-    this.game.checkCollisons();
+    this.game.draw(this.ctx);
   }, 20);
 };
 
